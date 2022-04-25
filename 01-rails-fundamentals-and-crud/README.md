@@ -2,11 +2,10 @@
 
 ## Lecture Objectives
 
-- ✅ Explain "Convention Over Configuration" and why it’s important in Rails
-- ✅ Explain MVC and how it relates to Rails
-- ✅ Use `rails new` to create a Rails project 
-- ✅ Configure CORS
-- ✅ Use Rails generators to create models, controllers and migrations  
+- ✅ Explain "Convention Over Configuration" and why it’s important in Rails 
+- ✅ Explain MVC and how it relates to Rails 
+- ✅ Use Rails generators to create new migrations
+- ✅ Add controller actions and routes for new API endpoints (production_roles, tickets, users)
 
 ## The Deliverables 
 We've been hired by the Flatiron Theater Company to re-design its official website. The website should have a React front end and a Rails back end. 
