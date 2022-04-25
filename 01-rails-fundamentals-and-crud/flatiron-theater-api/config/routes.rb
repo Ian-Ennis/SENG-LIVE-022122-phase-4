@@ -7,6 +7,15 @@ Rails.application.routes.draw do
 
   # NOTE: Make sure to check routes in console with "rails routes"
   
+  # "/productions", "/productions/:id"
   resources :productions, only: [:index, :show]
-  #  get '/productions', to: 'production#index'
+  
+  # "/production_roles", "/production_roles/:id"
+  resources :production_roles, only: [:index, :show]
+  
+  # "/tickets", "/tickets/:id"
+  resources :tickets, only: [:index, :show]
+  
+  # "/users", "/users/:id"
+  resources :users, only: [:index, :show]
 end

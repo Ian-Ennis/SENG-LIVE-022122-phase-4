@@ -6,5 +6,8 @@ class Production < ApplicationRecord
     # 1. Add Active Record Associations
     
     # Production "has_many" Tickets
-    # Procution "has_many" Users through Tickets
+    has_many :tickets
+
+    # Production "has_many" Users through Tickets
+    has_many :users, through: :tickets
 end
