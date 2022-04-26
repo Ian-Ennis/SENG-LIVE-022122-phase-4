@@ -5,4 +5,5 @@ class User < ApplicationRecord
     # GROUP ACTIVITY #2
     
     # Add Validation for "name" => Must Be Present / Unique
+    validates :name, presence: true, uniqueness: true
 end

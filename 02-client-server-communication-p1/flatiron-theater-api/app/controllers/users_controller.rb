@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
     # "/users"
     def index 
         render json: User.all
@@ -13,11 +14,13 @@ class UsersController < ApplicationController
     
     # GROUP ACTIVITY #1
     def create
-        # Add Code to Check Whether Processable Entity
+        user = User.create!(user_params)
         
-        # If Yes, Return New User in JSON Format With Status of Created
+        # Add Code to Check Whether Processable Entity
 
-        # If No, Return Errors With Status of Unprocessable Entity
+        render json: user, status: :created
+
+        # If Yes, Return New Production in JSON Format With Status of Created
     end
 
     private
@@ -25,5 +28,10 @@ class UsersController < ApplicationController
     # GROUP ACTIVITY #1
     def user_params
         # Add Strong Params for Each New User
+        params.permit(:name, :admin)
+    end
+
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
     end
 end

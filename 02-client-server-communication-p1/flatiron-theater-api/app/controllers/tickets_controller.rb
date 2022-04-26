@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
-    
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
+
     # "/tickets"
     def index 
         render json: Ticket.all
@@ -13,11 +15,14 @@ class TicketsController < ApplicationController
 
     # GROUP ACTIVITY #1
     def create
-        # Add Code to Check Whether Processable Entity
-        
-        # If Yes, Return New Ticket in JSON Format With Status of Created
 
-        # If No, Return Errors With Status of Unprocessable Entity
+        ticket = Ticket.create!(ticket_params)
+        
+        # Add Code to Check Whether Processable Entity
+
+        render json: ticket, status: :created
+
+        # If Yes, Return New Production in JSON Format With Status of Created
     end
 
     private
@@ -25,5 +30,10 @@ class TicketsController < ApplicationController
     # GROUP ACTIVITY #1
     def ticket_params
         # Add Strong Params for Each New Ticket
+        params.permit(:price, :user_id, :production_id)
+    end
+
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
     end
 end
