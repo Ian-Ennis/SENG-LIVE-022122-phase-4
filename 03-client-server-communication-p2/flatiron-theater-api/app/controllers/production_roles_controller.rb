@@ -1,5 +1,6 @@
 class ProductionRolesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     # GET "/production_roles"
     def index 
@@ -23,25 +24,25 @@ class ProductionRolesController < ApplicationController
     # PUT "/production_roles/:id"
     def update
         # Find Production Role via Params (id)
+        production_role = ProductionRole.find(params[:id])
 
-        # If Found, Render Production Role With Created Status
-
-            # Update Production Role with production_role_params
-
-            # If Errors, Raise Exception + Render Errors in JSON Format w/ Unprocessable Entity Status
-
-        # If Not Found, Raise Exception + Render Errors in JSON Format w/ Not Found Status
+        # If Found, Update / Render Production Role With Created Status
+        production_role.update!(production_role_params)
+        render json: production_role, status: :created
     end
 
     # DELETE "/production_roles/:id"
     def destroy
         # Find Production Role via Params (id)
+        production_role = ProductionRole.find(params[:id])
 
         # If Found, Destroy Production Role
+        production_role.destroy
 
-            # Render 204 Status Code (No Content) / Send No Content in Response 
+        # Render 204 Status Code (No Content) / Send No Content in Response 
+        head :no_content
 
-        # If Not Found, Raise Exception + Render Errors in JSON Format w/ Not Found Status
+        # render json: production_role
     end
 
     private
@@ -52,5 +53,9 @@ class ProductionRolesController < ApplicationController
 
     def render_unprocessable_entity_response(invalid)
         render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+    end
+
+    def render_not_found_response(invalid)
+        render json: { errors: invalid }, status: :not_found
     end
 end

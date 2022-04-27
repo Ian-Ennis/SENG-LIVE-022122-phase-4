@@ -1,5 +1,6 @@
 class ProductionsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     # GET "/productions"
     def index 
@@ -8,6 +9,10 @@ class ProductionsController < ApplicationController
 
     # GET "/productions/:id"
     def show
+        # production = Production.find("3") => ActiveRecord::RecordNotFound Exception
+        # byebug
+        
+        # "Automagically"
         production = Production.find(params[:id])
         render json: production, include: :production_roles
     end
@@ -23,25 +28,25 @@ class ProductionsController < ApplicationController
     # PUT "/productions/:id"
     def update
         # Find Production via Params (id)
+        production = Production.find(params[:id])
 
-        # If Found, Render Production With Created Status
-
-            # Update Production with production_params
-
-            # If Errors, Raise Exception + Render Errors in JSON Format w/ Unprocessable Entity Status
-
-        # If Not Found, Raise Exception + Render Errors in JSON Format w/ Not Found Status
+        # If Found, Update / Render Production With Created Status
+        production.update!(production_params)
+        render json: production, status: :created
     end
 
     # DELETE "/productions/:id"
     def destroy
         # Find Production via Params (id)
+        production = Production.find(params[:id])
 
         # If Found, Destroy Production
+        production.destroy
 
-            # Render 204 Status Code (No Content) / Send No Content in Response 
+        # Render 204 Status Code (No Content) / Send No Content in Response 
+        head :no_content
 
-        # If Not Found, Raise Exception + Render Errors in JSON Format w/ Not Found Status
+        # render json: production
     end
 
     private
@@ -52,5 +57,9 @@ class ProductionsController < ApplicationController
 
     def render_unprocessable_entity_response(invalid)
         render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+    end
+
+    def render_not_found_response(invalid)
+        render json: { errors: invalid }, status: :not_found
     end
 end
