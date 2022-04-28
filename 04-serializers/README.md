@@ -6,9 +6,8 @@
 - [] Review custom validations
 
 ### Deliverables 
-- [] Add serializer for Production 
-- [] Add serializer for Ticket
-- [] Add custom validation
+- [] Add serializers Production, ProductionRole, Ticket, and User
+- [] Add custom validation for User
 
 ### Domain
 ![domain_2](assets/domain_2.png)
