@@ -4,4 +4,5 @@
 
 class ProductionUserSerializer < ActiveModel::Serializer
 	# 1. Add attributes for "name" and "email"
+    attributes :name, :email
 end

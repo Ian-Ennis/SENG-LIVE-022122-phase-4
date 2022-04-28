@@ -10,4 +10,11 @@ class User < ApplicationRecord
 
     # GROUP ACTIVITY => Create Custom Validation "permitted_emails" 
     # (/gmail.com|yahoo.com|icloud.com/)
+    validate :permitted_emails
+
+    def permitted_emails
+        unless email.match?(/gmail.com|yahoo.com|icloud.com/)
+            errors.add(:permitted_emails, "We're sorry, we only accept Gmail, Yahoo, or iCloud email accounts.")
+        end
+    end
 end

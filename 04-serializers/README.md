@@ -1,6 +1,6 @@
 # Serializers
 ## Lecture Objectives
-- [] Implement Active Model Serializer  
+- [] Implement Active Model Serializer 
 - [] Create custom serializers 
 - [] Format data with serialization
 - [] Review custom validations

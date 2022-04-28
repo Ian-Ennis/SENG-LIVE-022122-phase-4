@@ -16,7 +16,7 @@ p2 = Production.create(
     description: 'Jellicle cats sing and dance', 
     budget: 200000.00, 
     image:'https://upload.wikimedia.org/wikipedia/en/3/3e/CatsMusicalLogo.jpg', 
-    ongoing: true
+    ongoing: false
 )
 
 # Initialize + Save One Production Role
