@@ -20,7 +20,7 @@ function App() {
   },[])
 
   function handlePost(obj){
-      fetch('/productions',{
+      fetch('http://localhost:3000/productions',{
         method:'POST',
         headers: {'Content-Type': 'application/json'},
         body:JSON.stringify(obj)

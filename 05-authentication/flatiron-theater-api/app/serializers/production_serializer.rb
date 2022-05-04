@@ -1,6 +1,6 @@
 class ProductionSerializer < ActiveModel::Serializer
 
-  attributes :title, :genre, :description, :image, :director, :budget, :ongoing
+  attributes :id, :title, :genre, :description, :image, :director, :budget, :ongoing
 
   has_many :tickets
   has_many :users, serializer: ProductionUserSerializer

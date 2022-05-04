@@ -4,5 +4,5 @@ class Production < ApplicationRecord
     has_many :users, through: :tickets
 
     validates :title, presence: true, uniqueness: true
-    validates :budget, numericality: { greater_than: 0 }
+    validates :budget, numericality: { other_than: 0 }
 end

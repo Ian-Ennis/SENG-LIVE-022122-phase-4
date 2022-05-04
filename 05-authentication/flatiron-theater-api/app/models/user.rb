@@ -10,7 +10,7 @@ class User < ApplicationRecord
     validate :permitted_emails
 
     def permitted_emails
-        unless email.match?(/gmail.com|yahoo.com|icloud.com/)
+        unless email.match?(/gmail.com|yahoo.com|icloud.com|flatironschool.com/)
             errors.add(:permitted_emails, "I'm sorry that email is not permitted.")
         end
     end 

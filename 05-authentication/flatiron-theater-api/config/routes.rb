@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :productions, only: [:index, :show, :destroy]
 
   # Group Activity => Add Route to Handle "sessions#login" (/login)
+  # post '/login', to: sessions#login
+  post "/login", to: 'sessions#login'
 end

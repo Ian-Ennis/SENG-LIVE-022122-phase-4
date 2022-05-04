@@ -1,8 +1,6 @@
 class Ticket < ApplicationRecord
-  belongs_to :production
   belongs_to :user
-
-  validates :price, presence: true, numericality: { greater_than: 0 }
-  validates :user_id, presence: true
-  validates :production_id, presence: true
+  belongs_to :production
+  
+  validates :price, numericality: { other_than: 0 }
 end

@@ -1,6 +1,7 @@
 class ProductionRolesController < ApplicationController
 
     # GET "/production_roles"
+    
     def index 
         render json: ProductionRole.all
     end 
