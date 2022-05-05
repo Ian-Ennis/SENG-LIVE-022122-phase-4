@@ -36,7 +36,7 @@ function Auth({setUser, setIsAuthenticated}) {
     }
     return (
         <> 
-        <h1>Sign UP</h1>
+        <h1>Sign Up</h1>
         <form onSubmit={onSubmit}>
         <label>
           Username
@@ -56,8 +56,8 @@ function Auth({setUser, setIsAuthenticated}) {
        
         <input type="submit" value="Sign up!" />
       </form>
-      {/* {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null} */}
-        </>
+      { Object.keys(errors) ? Object.keys(errors).map((key, index) => <div>{key+': ' + Object.values(errors)[index]}</div>) : null }
+      </>
     )
 }
 

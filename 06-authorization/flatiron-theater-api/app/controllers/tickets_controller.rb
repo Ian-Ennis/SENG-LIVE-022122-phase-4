@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
 
+    # before_action :is_admin, only: [:create, :destroy, :update]
+
     # GET "/tickets"
     def index 
         render json: Ticket.all

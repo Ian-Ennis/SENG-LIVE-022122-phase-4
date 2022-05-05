@@ -1,5 +1,7 @@
 class ProductionRolesController < ApplicationController
 
+    before_action :is_admin, only: [:create, :destroy, :update]
+
     # GET "/production_roles"
     def index 
         render json: ProductionRole.all

@@ -1,7 +1,10 @@
 class ProductionsController < ApplicationController
     # Group Activity => Set 'is_admin' to Fire Only Before Create + Destroy Actions
 
-        # - We only want Admins to have the capability to create / destroy Productions
+    # - We only want Admins to have the capability to create / destroy Productions
+    # - Users should only be able to view all / individual productions
+
+    before_action :is_admin, only: [:create, :destroy, :update]
 
     # GET "/productions"
     def index 
