@@ -90,10 +90,15 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.7.1)
     minitest (5.15.0)
     nio4r (2.5.8)
+    nokogiri (1.13.1)
+      mini_portile2 (~> 2.7.0)
+      racc (~> 1.4)
     nokogiri (1.13.1-x86_64-darwin)
       racc (~> 1.4)
+    pg (1.3.5)
     puma (5.6.1)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -139,7 +144,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     thor (1.2.1)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -149,6 +153,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  ruby
   x86_64-darwin-19
   x86_64-darwin-20
 
@@ -157,10 +162,10 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   listen (~> 3.3)
+  pg
   puma (~> 5.0)
   rack-cors
   rails (~> 6.1.4, >= 6.1.4.4)
-  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION
